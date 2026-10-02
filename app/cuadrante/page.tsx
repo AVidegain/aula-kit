@@ -34,6 +34,8 @@ import {
 
 import { Student } from "@/types/classroom"
 
+import Link from "next/link"
+
 import ClassroomGrid from "@/components/classroom/ClassroomGrid"
 import StudentList from "@/components/classroom/StudentList"
 import DraggableStudent from "@/components/classroom/DraggableStudent"
@@ -745,15 +747,18 @@ export default function CuadrantePage() {
                 <header className="border-b bg-white">
                     <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
-                        <div className="select-none">
-                            <h1 className="text-xl font-bold">
-                                Cuadrante de clase
+                        <Link
+                            href="/"
+                            className="cursor-pointer"
+                        >
+                            <h1 className="text-xl font-bold text-zinc-900 transition hover:text-zinc-600">
+                                AulaKit
                             </h1>
 
                             <p className="text-sm text-zinc-500">
-                                Organiza a tus alumnos
+                                Cuadrante de clase
                             </p>
-                        </div>
+                        </Link>
 
                         <div className="flex items-center gap-3 select-none">
 
@@ -767,9 +772,7 @@ export default function CuadrantePage() {
 
                             <button
                                 type="button"
-                                onClick={
-                                    handleImportClick
-                                }
+                                onClick={handleImportClick}
                                 className="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm transition-all duration-150 hover:border-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 hover:shadow active:scale-[0.98]"
                             >
                                 Importar
@@ -779,9 +782,7 @@ export default function CuadrantePage() {
 
                             <button
                                 type="button"
-                                onClick={
-                                    handleExport
-                                }
+                                onClick={handleExport}
                                 className="cursor-pointer rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-zinc-700 hover:shadow-md active:scale-[0.98]"
                             >
                                 Exportar
@@ -792,9 +793,7 @@ export default function CuadrantePage() {
                             <button
                                 type="button"
                                 onClick={() =>
-                                    setShowImageExport(
-                                        true
-                                    )
+                                    setShowImageExport(true)
                                 }
                                 className="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm transition-all duration-150 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-700 hover:shadow active:scale-[0.98]"
                             >
@@ -802,14 +801,10 @@ export default function CuadrantePage() {
                             </button>
 
                             <input
-                                ref={
-                                    fileInputRef
-                                }
+                                ref={fileInputRef}
                                 type="file"
                                 accept=".aula,application/json"
-                                onChange={
-                                    handleImport
-                                }
+                                onChange={handleImport}
                                 className="hidden"
                             />
                         </div>
@@ -822,7 +817,7 @@ export default function CuadrantePage() {
 
                     {/* CONFIGURACIÓN */}
 
-                    <section className="mb-6 rounded-2xl border bg-white p-5">
+                    <section className="mb-6 select-none rounded-2xl border bg-white p-5">
                         <div className="flex flex-wrap items-end gap-6">
 
                             {/* NOMBRE */}
@@ -924,7 +919,7 @@ export default function CuadrantePage() {
                                 }
                                 className="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm transition-all duration-150 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-700 hover:shadow active:scale-[0.98]"
                             >
-                                ✨ Rellenar automáticamente
+                                Rellenar automáticamente
                             </button>
 
                             {/* LIMPIAR */}

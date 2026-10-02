@@ -42,12 +42,14 @@ export default function DraggableStudent({
                 {...listeners}
                 {...attributes}
                 className={`
-          cursor-grab select-none rounded-lg
-          bg-amber-100 px-3 py-2
-          text-sm font-medium text-amber-900
-          active:cursor-grabbing
-          ${isDragging ? "opacity-0" : ""}
-        `}
+                    inline-block w-fit
+                    cursor-grab select-none rounded-lg
+                    bg-white px-3 py-2
+                    text-sm font-medium text-zinc-900
+                    whitespace-nowrap
+                    active:cursor-grabbing
+                    ${isDragging ? "opacity-0" : ""}
+                `}
             >
                 {student.name}
             </div>
@@ -61,12 +63,12 @@ export default function DraggableStudent({
             {...listeners}
             {...attributes}
             className={`
-        group flex cursor-grab select-none
-        items-center justify-between
-        rounded-lg border bg-zinc-50 px-3 py-2
-        active:cursor-grabbing
-        ${isDragging ? "opacity-0" : "hover:border-amber-300"}
-      `}
+                group flex cursor-grab select-none
+                items-center justify-between
+                rounded-lg border bg-zinc-50 px-3 py-2
+                active:cursor-grabbing
+                ${isDragging ? "opacity-0" : "hover:border-amber-300"}
+            `}
         >
             <div className="flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-sm font-semibold text-amber-700">
