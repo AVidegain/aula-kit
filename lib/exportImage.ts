@@ -6,7 +6,8 @@ type ExportImageOptions = {
     students: Student[]
     rowGap: number
     columnGap: number
-    transparent: boolean
+    background: "white" | "transparent"
+    classroomName: string
 }
 
 export async function exportClassroomAsImage({
@@ -15,7 +16,7 @@ export async function exportClassroomAsImage({
     students,
     rowGap,
     columnGap,
-    transparent,
+    background,
 }: ExportImageOptions) {
     const seatWidth = 180
     const seatHeight = 90
@@ -33,12 +34,14 @@ export async function exportClassroomAsImage({
 
     const scale = 2
 
-    const canvas = document.createElement("canvas")
+    const canvas =
+        document.createElement("canvas")
 
     canvas.width = width * scale
     canvas.height = height * scale
 
-    const context = canvas.getContext("2d")
+    const context =
+        canvas.getContext("2d")
 
     if (!context) {
         throw new Error(
@@ -48,9 +51,10 @@ export async function exportClassroomAsImage({
 
     context.scale(scale, scale)
 
-    // Fondo blanco si no se ha elegido transparente.
-    if (!transparent) {
+    // Fondo
+    if (background === "white") {
         context.fillStyle = "#ffffff"
+
         context.fillRect(
             0,
             0,
@@ -59,16 +63,15 @@ export async function exportClassroomAsImage({
         )
     }
 
-    const sortedStudents = [...students]
-
-    for (const student of sortedStudents) {
+    for (const student of students) {
         if (student.position === null) {
             continue
         }
 
-        const row = Math.floor(
-            student.position / columns
-        )
+        const row =
+            Math.floor(
+                student.position / columns
+            )
 
         const column =
             student.position % columns
@@ -107,12 +110,9 @@ export async function exportClassroomAsImage({
         context.textAlign = "center"
         context.textBaseline = "middle"
 
-        const name =
-            student.name
-
         drawWrappedText(
             context,
-            name,
+            student.name,
             x + seatWidth / 2,
             y + seatHeight / 2,
             seatWidth - 24,
@@ -127,9 +127,7 @@ export async function exportClassroomAsImage({
         "cuadrante.png"
 
     link.href =
-        canvas.toDataURL(
-            "image/png"
-        )
+        canvas.toDataURL("image/png")
 
     link.click()
 }
@@ -255,7 +253,8 @@ function drawWrappedText(
     }
 
     const totalHeight =
-        lines.length * lineHeight
+        lines.length *
+        lineHeight
 
     let y =
         centerY -
