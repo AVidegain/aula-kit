@@ -23,7 +23,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">{children}
+
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="9843e15a-3295-4e61-86c6-ad4889d59c6f"></script>
+      </body>
     </html>
   );
 }
